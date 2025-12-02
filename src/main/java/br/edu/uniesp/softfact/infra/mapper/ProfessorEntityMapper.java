@@ -11,4 +11,6 @@ public interface ProfessorEntityMapper {
     ProfessorEntity toEntity(Professor dto);
 
     ProfessorResponse toResponse(ProfessorEntity entity);
+
+
 }

@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/projetos")
+@RequestMapping("/api/projetos")
 @RequiredArgsConstructor
 public class ProjetoQueryController {
 

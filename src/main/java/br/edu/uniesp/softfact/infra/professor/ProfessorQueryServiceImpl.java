@@ -51,7 +51,7 @@ public class ProfessorQueryServiceImpl implements ProfessorQueryService {
 
     private ProfessorResponse toResponse(ProfessorEntity e) {
         return new ProfessorResponse(
-                e.getId(),
+                e.getIdProfessor(),
                 e.getNome(),
                 e.getEmail()
         );

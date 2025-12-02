@@ -18,6 +18,5 @@ public interface ProfessorRepository extends JpaRepository<ProfessorEntity, Long
     // Busca por nome (equivalente ao de Aluno)
     Page<ProfessorEntity> findByNomeContainingIgnoreCase(String nome, Pageable pageable);
 
-    // Filtro usando stacks (igual ao aluno)
-    Page<ProfessorEntity> findDistinctByStacks_NomeInIgnoreCase(Collection<String> nomesStacks, Pageable pageable);
+
 }

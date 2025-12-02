@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 public class UpdateProfessorServiceImpl implements UpdateProfessorService {
 
     private final ProfessorRepository repo;
-    private final StackTecRepository stackRepo;
     private final ProfessorEntityMapper entityMapper;
 
     @Override
@@ -43,10 +42,7 @@ public class UpdateProfessorServiceImpl implements UpdateProfessorService {
 
         existente.setNome(dto.getNome());
         existente.setEmail(dto.getEmail());
-        existente.setTelefone(dto.getTelefone());
-        existente.setArea(dto.getArea());
-        existente.setFormacao(dto.getFormacao());
-        existente.setStacks(buscarStacks(dto.getStacks().stream().map(StackTecnologia::getId).collect(Collectors.toSet())));
+
 
         return entityMapper.toResponse(existente);
     }
@@ -55,14 +51,6 @@ public class UpdateProfessorServiceImpl implements UpdateProfessorService {
     public void excluir(Long id) {
         if (!repo.existsById(id)) throw new EntityNotFoundException("Professor não encontrado: " + id);
         repo.deleteById(id);
-    }
-
-    private Set<StackTecnologia> buscarStacks(Set<Long> ids) {
-        if (ids == null || ids.isEmpty()) return Set.of();
-        return ids.stream()
-                .map(id -> stackRepo.findById(id)
-                        .orElseThrow(() -> new EntityNotFoundException("Stack não encontrada: " + id)))
-                .collect(Collectors.toSet());
     }
 }
 

@@ -13,9 +13,7 @@ import java.util.Set;
 @Builder
 public class Professor {
 
-    private Long id;
+    private Long idProfessor;
     private String nome;
     private String email;
-
-    private Set<StackTecnologia> stacks = new HashSet<>();
 }

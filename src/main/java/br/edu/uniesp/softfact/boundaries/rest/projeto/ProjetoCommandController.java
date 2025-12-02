@@ -7,14 +7,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/projetos")
+@RequestMapping("/api/projetos")
 @RequiredArgsConstructor
 public class ProjetoCommandController {
 
     private final ProjetoCommandService commandService;
 
     @PostMapping
-    public ProjetoResponse create(@RequestBody ProjetoCreateRequest request) {
+    public ProjetoResponse criar(@RequestBody ProjetoCreateRequest request) {
         Projeto projeto = Projeto.builder()
                 .nome(request.getNome())
                 .descricao(request.getDescricao())
@@ -40,7 +40,7 @@ public class ProjetoCommandController {
     }
 
     @PutMapping("/{id}")
-    public ProjetoResponse update(@PathVariable Long id, @RequestBody ProjetoUpdateRequest request) {
+    public ProjetoResponse atualizar(@PathVariable Long id, @RequestBody ProjetoUpdateRequest request) {
 
         Projeto projeto = Projeto.builder()
                 .idProjeto(id)

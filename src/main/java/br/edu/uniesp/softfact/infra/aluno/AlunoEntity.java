@@ -22,7 +22,8 @@ import java.util.Set;
 @NoArgsConstructor @AllArgsConstructor @Builder
 public class AlunoEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
