@@ -34,17 +34,17 @@
 
 - **`controller`** -> Que tem como objetivo definir as rotas e verifica as requisições do cliente.
   
-  - *Controladores de Consulta*:
+ - *Controladores de Consulta*:
     
-  - `AlunoQueryController`: Consulta e busca informações de Aluno via requisições HTTP.
-  - `ProfessorQueryController`: Consulta e busca informações de Professor via requisições HTTP.
-  - `StackQueryController`: Consulta e busca informações de Stacks via requisições HTTP.
+   - `AlunoQueryController`: Consulta e busca informações de Aluno via requisições HTTP.
+   - `ProfessorQueryController`: Consulta e busca informações de Professor via requisições HTTP.
+   - `StackQueryController`: Consulta e busca informações de Stacks via requisições HTTP.
 
  - *Controladores de Comando*:
     
-  - `AlunoCommandController`:Cria, atualiza e deleta informações de Aluno via requisições HTTP.
-  - `ProfessorCommandController`: Cria, atualiza e deleta informações de Professor via requisições HTTP.
-  - `StackCommandController`: Cria, atualiza e deleta informações de Stacks via requisições HTTP.
+   - `AlunoCommandController`:Cria, atualiza e deleta informações de Aluno via requisições HTTP.
+   - `ProfessorCommandController`: Cria, atualiza e deleta informações de Professor via requisições HTTP.
+   - `StackCommandController`: Cria, atualiza e deleta informações de Stacks via requisições HTTP.
 
 
 
