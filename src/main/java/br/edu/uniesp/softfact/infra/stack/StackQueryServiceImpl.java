@@ -1,8 +1,8 @@
-package br.edu.uniesp.softfact.domain.stack;
+package br.edu.uniesp.softfact.infra.stack;
 
-import br.edu.uniesp.softfact.infra.stack.StackEntity;
-import br.edu.uniesp.softfact.infra.stack.StackRepository;
-import br.edu.uniesp.softfact.shared.enums.Categoria;
+import br.edu.uniesp.softfact.domain.stack.StackQueryService;
+import br.edu.uniesp.softfact.zo.old.stack.StackTecRepository;
+import br.edu.uniesp.softfact.zo.old.stack.StackTecnologia;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,31 +13,31 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StackQueryServiceImpl implements StackQueryService {
 
-    private final StackRepository stackRepository;
+    private final StackTecRepository stackRepository;
 
     @Override
     @Transactional(readOnly = true)
-    public List<StackEntity> findAll() {
+    public List<StackTecnologia> findAll() {
         return stackRepository.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public StackEntity findById(Long id) {
+    public StackTecnologia findById(Long id) {
         return stackRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Stack não encontrada"));
     }
 
     @Override
     @Transactional(readOnly = true)
-    public StackEntity findByNome(String nome) {
+    public StackTecnologia findByNome(String nome) {
         return stackRepository.findByNome(nome)
                 .orElseThrow(() -> new IllegalArgumentException("Stack não encontrada"));
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<StackEntity> findByCategoria(Categoria categoria) {
+    public List<StackTecnologia> findByCategoria(String categoria) {
         return stackRepository.findByCategoria(categoria);
     }
 }

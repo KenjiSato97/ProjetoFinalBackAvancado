@@ -3,8 +3,8 @@ package br.edu.uniesp.softfact.infra.stack;
 import br.edu.uniesp.softfact.application.stack.StackCreateRequest;
 import br.edu.uniesp.softfact.application.stack.StackUpdateRequest;
 import br.edu.uniesp.softfact.domain.stack.StackCommandService;
-import br.edu.uniesp.softfact.infra.stack.StackEntity;
-import br.edu.uniesp.softfact.infra.stack.StackRepository;
+import br.edu.uniesp.softfact.zo.old.stack.StackTecRepository;
+import br.edu.uniesp.softfact.zo.old.stack.StackTecnologia;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,16 +13,16 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class StackCommandServiceImpl implements StackCommandService {
 
-    private final StackRepository stackRepository;
+    private final StackTecRepository stackRepository;
 
     @Override
     @Transactional
-    public StackEntity create(StackCreateRequest request) {
+    public StackTecnologia create(StackCreateRequest request) {
         if (stackRepository.existsByNome(request.getNome())) {
             throw new IllegalArgumentException("Stack com nome '" + request.getNome() + "' já existe");
         }
 
-        StackEntity stack = StackEntity.builder()
+        StackTecnologia stack = StackTecnologia.builder()
                 .nome(request.getNome())
                 .categoria(request.getCategoria())
                 .build();
@@ -32,8 +32,8 @@ public class StackCommandServiceImpl implements StackCommandService {
 
     @Override
     @Transactional
-    public StackEntity update(Long id, StackUpdateRequest request) {
-        StackEntity stack = stackRepository.findById(id)
+    public StackTecnologia update(Long id, StackUpdateRequest request) {
+        StackTecnologia stack = stackRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Stack não encontrada"));
 
         if (request.getNome() != null && !request.getNome().equals(stack.getNome())) {

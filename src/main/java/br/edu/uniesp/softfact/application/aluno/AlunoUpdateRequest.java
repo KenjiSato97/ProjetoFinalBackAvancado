@@ -18,7 +18,5 @@ public record AlunoUpdateRequest(
         @NotBlank String
         matricula,
         @NotNull
-        Periodo periodo,
-        Set<Long>
-        stacksIds
+        Periodo periodo
 ) {}

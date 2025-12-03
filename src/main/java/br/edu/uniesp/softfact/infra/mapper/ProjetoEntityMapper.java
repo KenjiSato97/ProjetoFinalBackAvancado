@@ -9,7 +9,7 @@ public interface ProjetoEntityMapper {
         if (entity == null) return null;
 
         return Projeto.builder()
-                .idProjeto(entity.getIdProjeto())
+                .id(entity.getIdProjeto())
                 .nome(entity.getNome())
                 .descricao(entity.getDescricao())
                 .tipo(entity.getTipo())

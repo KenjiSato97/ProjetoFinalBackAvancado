@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class Projeto {
-    private Long idProjeto;
+    private Long id;
     private String nome;
     private String descricao;
     private String tipo;

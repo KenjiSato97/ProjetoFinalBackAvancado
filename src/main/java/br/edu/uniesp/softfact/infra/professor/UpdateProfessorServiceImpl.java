@@ -1,6 +1,8 @@
 package br.edu.uniesp.softfact.infra.professor;
 
+import br.edu.uniesp.softfact.application.professor.ProfessorCreateRequest;
 import br.edu.uniesp.softfact.application.professor.ProfessorResponse;
+import br.edu.uniesp.softfact.application.professor.ProfessorUpdateRequest;
 import br.edu.uniesp.softfact.domain.professor.Professor;
 import br.edu.uniesp.softfact.domain.professor.UpdateProfessorService;
 import br.edu.uniesp.softfact.infra.mapper.ProfessorEntityMapper;
@@ -24,24 +26,26 @@ public class UpdateProfessorServiceImpl implements UpdateProfessorService {
     private final ProfessorEntityMapper entityMapper;
 
     @Override
-    public ProfessorResponse criar(Professor dto) {
-        if (repo.existsByEmail(dto.getEmail())) {
+    public ProfessorResponse criar(ProfessorCreateRequest dto) {
+        if (repo.existsByEmail(dto.email())) {
             throw new DataIntegrityViolationException("E-mail já cadastrado.");
         }
-        return entityMapper.toResponse(repo.save(entityMapper.toEntity(dto)));
+        ProfessorEntity entity = entityMapper.toEntity(dto);
+        var saved = repo.save(entity);
+        return entityMapper.toResponse(saved);
     }
 
     @Override
-    public ProfessorResponse atualizar(Long id, Professor dto) {
+    public ProfessorResponse atualizar(Long id, ProfessorUpdateRequest dto) {
         ProfessorEntity existente = repo.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Professor não encontrado: " + id));
 
-        if (!existente.getEmail().equalsIgnoreCase(dto.getEmail()) && repo.existsByEmail(dto.getEmail())) {
+        if (!existente.getEmail().equalsIgnoreCase(dto.email()) && repo.existsByEmail(dto.email())) {
             throw new DataIntegrityViolationException("E-mail já cadastrado.");
         }
 
-        existente.setNome(dto.getNome());
-        existente.setEmail(dto.getEmail());
+        existente.setNome(dto.nome());
+        existente.setEmail(dto.email());
 
 
         return entityMapper.toResponse(existente);

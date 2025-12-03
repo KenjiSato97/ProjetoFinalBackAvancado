@@ -18,7 +18,7 @@ public class ProjetoQueryController {
         var projeto = queryService.findById(id);
 
         return ProjetoResponse.builder()
-                .idProjeto(projeto.getIdProjeto())
+                .idProjeto(projeto.getId())
                 .nome(projeto.getNome())
                 .descricao(projeto.getDescricao())
                 .tipo(projeto.getTipo())

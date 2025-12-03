@@ -20,7 +20,7 @@ public class ProfessorEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idProfessor;
+    private Integer id;
 
     @NotBlank
     @Column(nullable = false)

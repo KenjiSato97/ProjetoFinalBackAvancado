@@ -9,6 +9,7 @@ import br.edu.uniesp.softfact.infra.aluno.AlunoRepository;
 import br.edu.uniesp.softfact.infra.mapper.ProjetoEntityMapper;
 import br.edu.uniesp.softfact.zo.old.stack.StackTecRepository;
 import br.edu.uniesp.softfact.zo.old.stack.StackTecnologia;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,9 +29,20 @@ public class ProjetoCommandServiceImpl implements ProjetoCommandService {
     }
 
     @Override
-    public Projeto update(Projeto projeto) {
-       var entity = ProjetoEntityMapper.toEntity(projeto);
-        return ProjetoEntityMapper.toDomain(repository.save(entity));
+    public Projeto update(Long id, Projeto projeto) {
+        ProjetoEntity existingEntity = repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Projeto não encontrado"));
+
+        existingEntity.setNome(projeto.getNome());
+        existingEntity.setDescricao(projeto.getDescricao());
+        existingEntity.setTipo(projeto.getTipo());
+        existingEntity.setNomeEmpresa(projeto.getNomeEmpresa());
+        existingEntity.setSemestre(projeto.getSemestre());
+        existingEntity.setStatus(projeto.getStatus());
+        existingEntity.setIdProfessor(projeto.getIdProfessor());
+
+        var updatedEntity = repository.save(existingEntity);
+        return ProjetoEntityMapper.toDomain(updatedEntity);
     }
     @Override
     @Transactional

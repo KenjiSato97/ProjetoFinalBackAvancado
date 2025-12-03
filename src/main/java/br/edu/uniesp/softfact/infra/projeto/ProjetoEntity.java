@@ -1,7 +1,6 @@
 package br.edu.uniesp.softfact.infra.projeto;
 
 import br.edu.uniesp.softfact.infra.aluno.AlunoEntity;
-import br.edu.uniesp.softfact.infra.stack.StackEntity;
 import br.edu.uniesp.softfact.zo.old.stack.StackTecnologia;
 import jakarta.persistence.*;
 import lombok.*;

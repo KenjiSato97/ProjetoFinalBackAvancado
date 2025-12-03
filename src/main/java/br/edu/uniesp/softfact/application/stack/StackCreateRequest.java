@@ -1,7 +1,6 @@
 package br.edu.uniesp.softfact.application.stack;
 
 
-import br.edu.uniesp.softfact.shared.enums.Categoria;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -17,5 +16,5 @@ public class StackCreateRequest {
     private String nome;
 
     @NotNull(message = "Categoria é obrigatória")
-    private Categoria categoria;
+    private String categoria;
 }

@@ -5,7 +5,6 @@ import br.edu.uniesp.softfact.application.stack.VincularStackRequest;
 import br.edu.uniesp.softfact.domain.aluno.Aluno;
 import br.edu.uniesp.softfact.domain.aluno.UpdateAlunoService;
 import br.edu.uniesp.softfact.infra.mapper.AlunoEntityMapper;
-import br.edu.uniesp.softfact.infra.stack.StackEntity;
 import br.edu.uniesp.softfact.zo.old.stack.StackTecRepository;
 import br.edu.uniesp.softfact.zo.old.stack.StackTecnologia;
 import jakarta.persistence.EntityNotFoundException;
@@ -52,7 +51,7 @@ public class UpdateAlunoServiceImpl implements UpdateAlunoService {
         existente.setCurso(dto.getCurso());
         existente.setMatricula(dto.getMatricula());
         existente.setPeriodo(dto.getPeriodo());
-        existente.setStacks(buscarStacks(dto.getStacks().stream().map(StackTecnologia::getId).collect(Collectors.toSet())));
+        //existente.setStacks(buscarStacks(dto.getStacks().stream().map(StackTecnologia::getId).collect(Collectors.toSet())));
 
         return entityMapper.toResponse(existente);
     }

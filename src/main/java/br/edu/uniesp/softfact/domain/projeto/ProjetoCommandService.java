@@ -7,7 +7,7 @@ import br.edu.uniesp.softfact.infra.projeto.ProjetoEntity;
 
 public interface ProjetoCommandService {
     Projeto save(Projeto projeto);
-    Projeto update(Projeto projeto);
+    Projeto update(Long id, Projeto projeto);
 
     ProjetoEntity vincularAluno(Long projetoId, VincularAlunoRequest request);
     ProjetoEntity desvincularAluno(Long projetoId, VincularAlunoRequest request);

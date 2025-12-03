@@ -16,20 +16,18 @@ import org.springframework.web.bind.annotation.*;
 public class ProfessorCommandController {
 
     private final UpdateProfessorService service;
-    private final ProfessorCreateMapper createMapper;
-    private final ProfessorUpdateMapper updateMapper;
 
     @PostMapping
     public ProfessorResponse criar(@RequestBody @Valid ProfessorCreateRequest request) {
-        var dominio = createMapper.toDomain(request);
-        return service.criar(dominio);
+
+        return service.criar(request);
     }
 
     @PutMapping("/{id}")
     public ProfessorResponse atualizar(@PathVariable Long id,
                                        @RequestBody @Valid ProfessorUpdateRequest request) {
-        var dominio = updateMapper.toDomain(request);
-        return service.atualizar(id, dominio);
+
+        return service.atualizar(id, request);
     }
 
     @DeleteMapping("/{id}")

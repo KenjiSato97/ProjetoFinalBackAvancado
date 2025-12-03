@@ -33,7 +33,7 @@ public class ProjetoCommandController {
         var saved = commandService.save(projeto);
 
         return ProjetoResponse.builder()
-                .idProjeto(saved.getIdProjeto())
+                .idProjeto(saved.getId())
                 .nome(saved.getNome())
                 .descricao(saved.getDescricao())
                 .tipo(saved.getTipo())
@@ -48,7 +48,7 @@ public class ProjetoCommandController {
     public ProjetoResponse atualizar(@PathVariable Long id, @RequestBody ProjetoUpdateRequest request) {
 
         Projeto projeto = Projeto.builder()
-                .idProjeto(id)
+                .id(id)
                 .nome(request.getNome())
                 .descricao(request.getDescricao())
                 .tipo(request.getTipo())
@@ -58,10 +58,10 @@ public class ProjetoCommandController {
                 .idProfessor(request.getIdProfessor())
                 .build();
 
-        var updated = commandService.update(projeto);
+        var updated = commandService.update(id, projeto);
 
         return ProjetoResponse.builder()
-                .idProjeto(updated.getIdProjeto())
+                .idProjeto(updated.getId())
                 .nome(updated.getNome())
                 .descricao(updated.getDescricao())
                 .tipo(updated.getTipo())
