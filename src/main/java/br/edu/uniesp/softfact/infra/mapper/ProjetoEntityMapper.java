@@ -1,5 +1,6 @@
 package br.edu.uniesp.softfact.infra.mapper;
 
+import br.edu.uniesp.softfact.application.projeto.ProjetoCreateRequest;
 import br.edu.uniesp.softfact.domain.projeto.Projeto;
 import br.edu.uniesp.softfact.infra.projeto.ProjetoEntity;
 
@@ -21,7 +22,6 @@ public interface ProjetoEntityMapper {
 
     public static ProjetoEntity toEntity(Projeto projeto) {
         return ProjetoEntity.builder()
-                .idProjeto(projeto.getIdProjeto())
                 .nome(projeto.getNome())
                 .descricao(projeto.getDescricao())
                 .tipo(projeto.getTipo())

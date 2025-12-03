@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "projeto")
+@Table(name = "tb_softfact_projeto")
 @Getter
 @Setter
 @AllArgsConstructor

@@ -1,5 +1,7 @@
 package br.edu.uniesp.softfact.infra.projeto;
 
+import br.edu.uniesp.softfact.application.projeto.ProjetoCreateRequest;
+import br.edu.uniesp.softfact.application.projeto.ProjetoUpdateRequest;
 import br.edu.uniesp.softfact.domain.projeto.Projeto;
 import br.edu.uniesp.softfact.domain.projeto.ProjetoCommandService;
 import br.edu.uniesp.softfact.infra.mapper.ProjetoEntityMapper;
@@ -20,7 +22,7 @@ public class ProjetoCommandServiceImpl implements ProjetoCommandService {
 
     @Override
     public Projeto update(Projeto projeto) {
-        var entity = ProjetoEntityMapper.toEntity(projeto);
+       var entity = ProjetoEntityMapper.toEntity(projeto);
         return ProjetoEntityMapper.toDomain(repository.save(entity));
     }
 }
