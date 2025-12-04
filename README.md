@@ -88,7 +88,37 @@
   
   - *Regras de negócio*:
     
-  - `AlunoQueryService`, `ProfessorQueryService`, `ProjetoQueryService`, .
+  - `AlunoQueryService`, `ProfessorQueryService`, `ProjetoQueryService`.
+
+**Endpoints da API
+   
+*Endpoints da Entidade Aluno
+
+As rotas de Comando para o Aluno são gerenciadas pelo AlunoCommandController: a criação de novos alunos é feita via POST /api/v1/alunos,
+a atualização de dados utiliza PUT /api/v1/alunos/{id}, e a remoção é feita com DELETE /api/v1/alunos/{id}. Já as operações de Consulta
+são de responsabilidade do AlunoQueryController, permitindo listar todos os alunos através de GET /api/v1/alunos ou buscar um aluno
+específico por seu identificador com GET /api/v1/alunos/{id};
+
+*Endpoints da Entidade Projeto
+
+O ProjetoCommandController implementa as rotas de Comando para Projetos: POST /api/v1/projetos para criar um novo projeto, 
+PUT /api/v1/projetos/{id} para atualizar um projeto existente, e DELETE /api/v1/projetos/{id} para deletá-lo. As rotas de Consulta 
+do ProjetoQueryController incluem GET /api/v1/projetos para listar todos os projetos e GET /api/v1/projetos/{id} para buscar um projeto 
+específico;
+
+*Endpoints da Entidade Professor
+
+O ProfessorCommandController lida com as operações de Comando da entidade Professor: criar um novo professor é feito com
+POST /api/v1/professores, a atualização é por meio de PUT /api/v1/professores/{id}, e a exclusão é com DELETE /api/v1/professores/{id}. 
+As rotas de Consulta ficam no ProfessorQueryController, permitindo listar todos os professores via GET /api/v1/professores e buscar 
+um professor por seu ID usando GET /api/v1/professores/{id};
+
+*Endpoints da Entidade Stack
+
+Para a entidade Stack, as operações de Comando gerenciadas pelo StackCommandController incluem a criação de uma nova stack com
+POST /api/v1/stacks, a atualização por PUT /api/v1/stacks/{id}, e a remoção com DELETE /api/v1/stacks/{id}. O StackQueryController 
+oferece as rotas de Consulta: GET /api/v1/stacks para listar o catálogo completo de stacks e GET /api/v1/stacks/{id} para buscar uma 
+stack específica.
 
 ---
 
